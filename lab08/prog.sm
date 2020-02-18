@@ -1,0 +1,25 @@
+.data
+
+.text
+
+main:
+	li $a0 1
+	sll $a0, $a0, 16
+	addiu $a0, $a0, 4464
+	li $a0 0
+	sll $a0, $a0, 16
+	addiu $a0, $a0, 1
+	sw $a0 0($sp)
+	addiu $sp $sp -4
+	li $a0 0
+	sll $a0, $a0, 16
+	addiu $a0, $a0, 2
+	lw $t1 4($sp)
+	add $a0 $t1 $a0
+	addiu $sp $sp 4		# 1+2	
+	li $v0, 1      # system call code for print_int
+	syscall        # print it
+
+
+	li $v0, 10	
+	syscall		#exit
